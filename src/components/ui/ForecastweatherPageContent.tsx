@@ -128,29 +128,81 @@ function ForecastweatherPageContent(
     return (
         <div id="weather-current-content">
             <div className="weather-current-content-left-column">
-                <div className="current-weather-left-column">
-                    <div className="current-weather-left-column-time">
-                        <div className="current-weather-left-column-time-location">
-                            <CiLocationOn
-                                size={20}
-                            />
-                            <p>{countryName}, {cityName}</p>
+                <div className="forecast-weather-left-column-scroll">
+                    <div className="forecast-weather-left-column">
+                        <div className="current-weather-left-column-time">
+                            <div className="current-weather-left-column-time-location">
+                                <CiLocationOn
+                                    size={20}
+                                />
+                                <p>{countryName}, {cityName}</p>
+                            </div>
+                            <p>{day}</p>
+                            <p>{date} {months[month]}, {year}</p>
                         </div>
-                        <p>{day}</p>
-                        <p>{date} {months[month]}, {year}</p>
+                        <div className="current-weather-left-column-temp">
+                            <div className="current-weather-left-column-temp-C">
+                                <p>{temp_max}°C</p>
+                                <p>/{temp_min}°C</p>
+                            </div>
+                            <div className="current-weather-left-column-temp-weather">
+                                <p>{description}</p>
+                                <p>Feels like {feelLike}</p>
+                            </div>
+                        </div>
+                        <div className="current-weather-left-column-icon">
+                            <img src={imgWeather} />
+                        </div>
                     </div>
-                    <div className="current-weather-left-column-temp">
-                        <div className="current-weather-left-column-temp-C">
-                            <p>{temp_max}°C</p>
-                            <p>/{temp_min}°C</p>
+                    <div className="forecast-weather-left-column">
+                        <div className="current-weather-left-column-time">
+                            <div className="current-weather-left-column-time-location">
+                                <CiLocationOn
+                                    size={20}
+                                />
+                                <p>{countryName}, {cityName}</p>
+                            </div>
+                            <p>{day}</p>
+                            <p>{date} {months[month]}, {year}</p>
                         </div>
-                        <div className="current-weather-left-column-temp-weather">
-                            <p>{description}</p>
-                            <p>Feels like {feelLike}</p>
+                        <div className="current-weather-left-column-temp">
+                            <div className="current-weather-left-column-temp-C">
+                                <p>{temp_max}°C</p>
+                                <p>/{temp_min}°C</p>
+                            </div>
+                            <div className="current-weather-left-column-temp-weather">
+                                <p>{description}</p>
+                                <p>Feels like {feelLike}</p>
+                            </div>
+                        </div>
+                        <div className="current-weather-left-column-icon">
+                            <img src={imgWeather} />
                         </div>
                     </div>
-                    <div className="current-weather-left-column-icon">
-                        <img src={imgWeather} />
+                    <div className="forecast-weather-left-column">
+                        <div className="current-weather-left-column-time">
+                            <div className="current-weather-left-column-time-location">
+                                <CiLocationOn
+                                    size={20}
+                                />
+                                <p>{countryName}, {cityName}</p>
+                            </div>
+                            <p>{day}</p>
+                            <p>{date} {months[month]}, {year}</p>
+                        </div>
+                        <div className="current-weather-left-column-temp">
+                            <div className="current-weather-left-column-temp-C">
+                                <p>{temp_max}°C</p>
+                                <p>/{temp_min}°C</p>
+                            </div>
+                            <div className="current-weather-left-column-temp-weather">
+                                <p>{description}</p>
+                                <p>Feels like {feelLike}</p>
+                            </div>
+                        </div>
+                        <div className="current-weather-left-column-icon">
+                            <img src={imgWeather} />
+                        </div>
                     </div>
                 </div>
                 <div className="other-countries-left-column">
@@ -186,79 +238,235 @@ function ForecastweatherPageContent(
             <div className="weather-current-content-right-column">
                 <div className="weather-today-highlight">
                     <p className="weather-today-highlight-name">Today's Hightlight</p>
-                    <div className="weather-today-highlight-boxs">
-                        <div className="weather-today-highlight-box-smalls">   
-                            <div className="weather-today-highlight-box-smalls-name">
-                                <FiWind
-                                    fontSize={20}
-                                />
-                                <p>Wind Status</p>
+                    <div className="weather-today-highlight-boxs-scroll">
+                        <div className="weather-today-highlight-boxs-forecast">
+                            <div className="weather-today-highlight-box-smalls">   
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <FiWind
+                                        fontSize={20}
+                                    />
+                                    <p>Wind Status</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{windSpeedKmh} km/h</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-mid">
-                                <p>{windSpeedKmh} km/h</p>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <WiHumidity
+                                        fontSize={20}
+                                    />
+                                    <p>Humidity</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{humidity}%</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{humidityStatus}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-end">
-                                <p>{hours}:{minutes}</p>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunrise.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunrise</p>
+                                    <p>{sunriseTime}</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <TbUvIndex
+                                        fontSize={20}
+                                    />
+                                    <p>UV Index</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{uv} uv</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{level} UV</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <MdOutlineVisibility
+                                        fontSize={20}
+                                    />
+                                    <p>Visibility</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{visibility} km</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunset.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunset</p>
+                                    <p>{sunsetTime}</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="weather-today-highlight-box-smalls">
-                            <div className="weather-today-highlight-box-smalls-name">
-                                <WiHumidity
-                                    fontSize={20}
-                                />
-                                <p>Humidity</p>
+
+                        <div className="weather-today-highlight-boxs-forecast">
+                            <div className="weather-today-highlight-box-smalls">   
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <FiWind
+                                        fontSize={20}
+                                    />
+                                    <p>Wind Status</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{windSpeedKmh} km/h</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-mid">
-                                <p>{humidity}%</p>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <WiHumidity
+                                        fontSize={20}
+                                    />
+                                    <p>Humidity</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{humidity}%</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{humidityStatus}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-end">
-                                <p>{humidityStatus}</p>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunrise.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunrise</p>
+                                    <p>{sunriseTime}</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <TbUvIndex
+                                        fontSize={20}
+                                    />
+                                    <p>UV Index</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{uv} uv</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{level} UV</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <MdOutlineVisibility
+                                        fontSize={20}
+                                    />
+                                    <p>Visibility</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{visibility} km</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
+                            </div>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunset.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunset</p>
+                                    <p>{sunsetTime}</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="weather-today-highlight-box-bigs">
-                            <div className="weather-today-highlight-box-bigs-img">
-                                <img src="/imgs/sunrise.png" />
+
+                        <div className="weather-today-highlight-boxs-forecast">
+                            <div className="weather-today-highlight-box-smalls">   
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <FiWind
+                                        fontSize={20}
+                                    />
+                                    <p>Wind Status</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{windSpeedKmh} km/h</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-bigs-name">
-                                <p>Sunrise</p>
-                                <p>{sunriseTime}</p>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <WiHumidity
+                                        fontSize={20}
+                                    />
+                                    <p>Humidity</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{humidity}%</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{humidityStatus}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="weather-today-highlight-box-smalls">
-                            <div className="weather-today-highlight-box-smalls-name">
-                                <TbUvIndex
-                                    fontSize={20}
-                                />
-                                <p>UV Index</p>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunrise.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunrise</p>
+                                    <p>{sunriseTime}</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-mid">
-                                <p>{uv} uv</p>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <TbUvIndex
+                                        fontSize={20}
+                                    />
+                                    <p>UV Index</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{uv} uv</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{level} UV</p>
+                                </div>
                             </div>
-                            <div className="weather-today-highlight-box-smalls-name-end">
-                                <p>{level} UV</p>
+                            <div className="weather-today-highlight-box-smalls">
+                                <div className="weather-today-highlight-box-smalls-name">
+                                    <MdOutlineVisibility
+                                        fontSize={20}
+                                    />
+                                    <p>Visibility</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-mid">
+                                    <p>{visibility} km</p>
+                                </div>
+                                <div className="weather-today-highlight-box-smalls-name-end">
+                                    <p>{hours}:{minutes}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="weather-today-highlight-box-smalls">
-                            <div className="weather-today-highlight-box-smalls-name">
-                                <MdOutlineVisibility
-                                    fontSize={20}
-                                />
-                                <p>Visibility</p>
-                            </div>
-                            <div className="weather-today-highlight-box-smalls-name-mid">
-                                <p>{visibility} km</p>
-                            </div>
-                            <div className="weather-today-highlight-box-smalls-name-end">
-                                <p>{hours}:{minutes}</p>
-                            </div>
-                        </div>
-                        <div className="weather-today-highlight-box-bigs">
-                            <div className="weather-today-highlight-box-bigs-img">
-                                <img src="/imgs/sunset.png" />
-                            </div>
-                            <div className="weather-today-highlight-box-bigs-name">
-                                <p>Sunset</p>
-                                <p>{sunsetTime}</p>
+                            <div className="weather-today-highlight-box-bigs">
+                                <div className="weather-today-highlight-box-bigs-img">
+                                    <img src="/imgs/sunset.png" />
+                                </div>
+                                <div className="weather-today-highlight-box-bigs-name">
+                                    <p>Sunset</p>
+                                    <p>{sunsetTime}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
