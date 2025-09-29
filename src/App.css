@@ -752,6 +752,14 @@
     align-items: center;
 }
 
+.weather-forecast-right-column-item > a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .weather-forecast-right-column-item-day {
     margin-top: 20px;
     margin-bottom: 8px;
@@ -797,19 +805,26 @@
     position: relative;
 }
 
-.forecast-weather-left-column-scroll {
+.forecast-weather-left-column-container {
     width: 100%;
     height: 45%;
+    position: relative;
+}
+
+.forecast-weather-left-column-scroll {
+    width: 100%;
+    height: 100%;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory; /* bật chế độ snap ngang */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth; /* cuộn mượt */
     border-radius: 26px;
+    position: relative;
 }
 
 .weather-today-highlight-boxs-forecast {
-    margin: 20px 22px;
+    margin: 8px 22px;
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
@@ -818,13 +833,51 @@
     scroll-snap-align: center;
 }
 
-.weather-today-highlight-boxs-scroll {
+.weather-today-highlight-boxs-dot {
     width: 100%;
     height: 300px;
+    position: relative;
+}
+
+.weather-today-highlight-boxs-scroll {
+    width: 100%;
+    height: 100%;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory; /* bật chế độ snap ngang */
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth; /* cuộn mượt */
 }
 
+.forecast-weather-right-column-dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 2px;
+}
+
+.forecast-weather-left-column-dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 2px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 100px;
+}
+
+.dot.active {
+    background-color: #007bff;
+}

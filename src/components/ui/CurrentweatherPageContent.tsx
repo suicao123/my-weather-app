@@ -4,6 +4,7 @@ import { FiWind } from "react-icons/fi"
 import { MdOutlineVisibility } from "react-icons/md"
 import { TbUvIndex } from "react-icons/tb"
 import { WiHumidity } from "react-icons/wi"
+import { Link } from "react-router"
 
 interface UVResult {
   uv: number;
@@ -280,17 +281,22 @@ function CurrentweatherPageContent(
                             listForecastWeather.map((list: any, index: number) => {
                                 const dtForecast = new Date(list.dt * 1000);
                                 const dayForecast = daysOfWeek[dtForecast.getUTCDay()];
+                                const dateStr = dtForecast.toISOString().split("T")[0]; 
                                 const imgWeatherForecast: string = `https://openweathermap.org/img/wn/${list.weather[0].icon}@4x.png`;
+                                
+                                const url:string = `/forecast-weather?date=${dateStr}`;
                                 return (
                                     <div key={index} className="weather-forecast-right-column-item">
-                                        <div className="weather-forecast-right-column-item-day">
-                                            {dayForecast}
-                                        </div>
-                                        <div className="weather-forecast-right-column-item-line"></div>
-                                        <div className="weather-forecast-right-column-item-img">
-                                            <img src={imgWeatherForecast} />
-                                        </div>
-                                        <p className="weather-forecast-right-column-item-temp">{Math.floor(list.main.temp)}°C</p>
+                                        <Link to={url}>
+                                            <div className="weather-forecast-right-column-item-day">
+                                                {dayForecast}
+                                            </div>
+                                            <div className="weather-forecast-right-column-item-line"></div>
+                                            <div className="weather-forecast-right-column-item-img">
+                                                <img src={imgWeatherForecast} />
+                                            </div>
+                                            <p className="weather-forecast-right-column-item-temp">{Math.floor(list.main.temp)}°C</p>
+                                        </Link>
                                     </div>
                                 )
                             })
