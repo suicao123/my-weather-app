@@ -49,7 +49,7 @@ function ForecastweatherPageContent(
     const forecastDay = params.get("date");
 
     const listForecastWeather = forecastData.list.filter((data: any) => data.dt_txt.includes("12:00:00"));
-    const listForecastDay = forecastData.list.filter((data: any) => data.dt_txt.includes(forecastDay));
+    const listForecastDay: any = forecastData.list.filter((data: any) => data.dt_txt.includes(forecastDay));
 
     const [leftDot, setLeftDot] = useState<number>(0);
     const [rightDot, setRightDot] = useState<number>(0);
@@ -155,7 +155,7 @@ function ForecastweatherPageContent(
                     </div>
                     <div className="forecast-weather-left-column-dot">
                         {
-                            listForecastDay.map((data: any, index: number) => {
+                            listForecastDay.map((_: any, index: number) => {
                                 return (
                                     <div className={`dot ${leftDot === index ? 'active' : ''}` }></div>
                                 )
@@ -427,7 +427,7 @@ function ForecastweatherPageContent(
                         </div>
                         <div className="forecast-weather-right-column-dot">
                             {
-                                listForecastDay.map((data: any, index: number) => {
+                                listForecastDay.map((_: any, index: number) => {
                                     return (
                                         <div className={`dot ${rightDot === index ? 'active' : ''}` }></div>
                                     )
