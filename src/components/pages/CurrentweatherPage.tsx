@@ -23,14 +23,14 @@ function CurrentweatherPage() {
                 setWeatherData(data);
 
                 const { lat, lon } = data.coord;
-                const resCountries = await fetch(`http://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=5&appid=${API_WEATHER_KEY}&units=metric`);
+                const resCountries = await fetch(`https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=5&appid=${API_WEATHER_KEY}&units=metric`);
                 if(!resCountries.ok) {
                     throw new Error('Error call API countries!!!');
                 }
                 const dataCountries = await resCountries.json();
                 setCountriesData(dataCountries);
 
-                const resForecastWeather = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_WEATHER_KEY}&units=metric`);
+                const resForecastWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_WEATHER_KEY}&units=metric`);
                 if(!resForecastWeather.ok) {
                     throw new Error('Error call API forecast')
                 }

@@ -22,14 +22,14 @@ function ForecastweatherPage() {
                 setWeatherData(data);
 
                 const { lat, lon } = data.coord;
-                const resCountriesData = await fetch(`http://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=5&appid=${API_WEATHER_KEY}&units=metric`);
+                const resCountriesData = await fetch(`https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=5&appid=${API_WEATHER_KEY}&units=metric`);
                 if(!res.ok) {
                     throw new Error('error api current');
                 }
                 const dataCountries = await  resCountriesData.json();
                 setCountriesData(dataCountries);
 
-                const resForecastWeather = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_WEATHER_KEY}&units=metric`);
+                const resForecastWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_WEATHER_KEY}&units=metric`);
                 if(!res.ok) {
                     throw new Error('error api current');
                 }
